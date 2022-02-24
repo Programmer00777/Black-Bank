@@ -25,7 +25,7 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email).orElseThrow(() ->
-                 new UsernameNotFoundException("User doesn't exist"));
+                new UsernameNotFoundException("User doesn't exist"));
         // Here our custom user converts to the user with which Spring Security works
         return SecurityUser.convertUser(user);
     }

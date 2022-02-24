@@ -26,19 +26,22 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login() {
-        return "/auth/login";
+        return "/login";
     }
 
     @GetMapping("/signup")
     public String signUp(User user, Model model) {
-        return "/auth/registration";
+
+        model.addAttribute("user", new User());
+
+        return "registration";
     }
 
     @PostMapping("/signup")
-    public String signUpProcess(@ModelAttribute User user, BindingResult bindingResult) {
+    public String signUpProcess(@ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            return "redirect:/auth/registration";
+            return "registration";
         }
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
@@ -46,7 +49,7 @@ public class AuthController {
 
         userRepository.save(user);
 
-        return "redirect:/auth/login";
+        return "redirect:/login";
     }
 
 }

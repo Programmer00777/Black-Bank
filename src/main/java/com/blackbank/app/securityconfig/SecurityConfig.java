@@ -31,11 +31,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .anyRequest().authenticated()
+                .anyRequest().authenticated()
                 .and()
-                    .formLogin()
+                .formLogin()
                 .and()
-                    .httpBasic();
+                .httpBasic();
     }
 
     @Override
