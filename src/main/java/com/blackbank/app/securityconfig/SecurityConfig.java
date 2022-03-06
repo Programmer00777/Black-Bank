@@ -33,7 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/profile/admin/**").hasAuthority(Permission.USERS_WRITE.getPermission())
-                .antMatchers("/auth").permitAll()
+                .antMatchers("/profile/owner/**").hasAuthority(Permission.USERS_DELETE.getPermission())
+                .antMatchers("/auth/**", "/styles/**", "/images/login/**", "/scripts/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -43,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
 

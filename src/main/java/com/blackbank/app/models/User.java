@@ -1,7 +1,6 @@
 package com.blackbank.app.models;
 
 import lombok.Data;
-import org.springframework.context.annotation.ComponentScan;
 
 import javax.persistence.*;
 

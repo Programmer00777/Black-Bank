@@ -33,7 +33,7 @@ public class AuthController {
     }
 
     @GetMapping("/signup")
-    public String signUp(User user, Model model) {
+    public String signUp(Model model) {
 
         model.addAttribute("user", new User());
 
@@ -41,10 +41,15 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public String signUpProcess(@ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
+    public String signUpProcess(@ModelAttribute("user") User user, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "registration";
+        }
+
+        if (userRepository.findByEmail(user.getEmail()).orElse(null) != null) {
+            System.out.println("Such user already exists");
+            return "redirect:/auth/signup";
         }
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
