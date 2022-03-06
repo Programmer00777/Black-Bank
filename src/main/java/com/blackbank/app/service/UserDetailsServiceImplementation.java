@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 @Service("userDetailsServiceImplementation")
 public class UserDetailsServiceImplementation implements UserDetailsService {
 
-    // FIX THIS CLASS. AFTER ITS DECLARATION AND INITIALIZATION SECURITY ISN'T WORKING
-
     private final UserRepository userRepository;
 
     @Autowired

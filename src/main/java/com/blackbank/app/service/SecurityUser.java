@@ -11,9 +11,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Class that represents the User entity of Spring Security.
+ *
+ * @author sergeychernikov
+ * @version 1.0
+ */
+
 @Data
 @AllArgsConstructor
-public class SecurityUser implements UserDetails { // Class that represents a Spring Security user entity
+public class SecurityUser implements UserDetails {
 
     private final String username;
     private final String password;

@@ -13,6 +13,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+/**
+ * Controller for the {@link User} authentication.
+ *
+ * @author sergeychernikov
+ * @version 2.0
+ */
+
 @Controller
 @RequestMapping("/auth")
 public class AuthController {
@@ -22,11 +30,6 @@ public class AuthController {
     @Autowired
     public AuthController(UserRepository userRepository) {
         this.userRepository = userRepository;
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "/login";
     }
 
     @GetMapping("/signup")
