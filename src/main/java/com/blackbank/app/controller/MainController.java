@@ -1,10 +1,13 @@
 package com.blackbank.app.controller;
 
+import com.blackbank.app.models.Role;
+import com.blackbank.app.models.User;
 import com.blackbank.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 
@@ -16,6 +19,7 @@ import java.security.Principal;
  */
 
 @Controller
+@RequestMapping("/profile")
 public class MainController {
 
     private final UserRepository userRepository;
@@ -29,13 +33,7 @@ public class MainController {
     public String index(Principal principal, Model model) {
 
         model.addAttribute("username", principal.getName());
-
         return "mainPage";
-    }
-
-    @GetMapping("/user")
-    public String getUserPage() {
-        return "userPage";
     }
 
     @GetMapping("/admin")

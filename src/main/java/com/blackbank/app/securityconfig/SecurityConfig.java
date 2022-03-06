@@ -1,5 +1,6 @@
 package com.blackbank.app.securityconfig;
 
+import com.blackbank.app.models.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -31,9 +32,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/profile/admin/**").hasAuthority(Permission.USERS_WRITE.getPermission())
+                .antMatchers("/auth").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+                .defaultSuccessUrl("/profile/")
                 .and()
                 .httpBasic();
     }
