@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/auth.css">
 </head>
 <body>
 <form class="form-signin" th:method="post" th:object="${user}"> <!-- added th:method and th:object -->
@@ -24,24 +24,28 @@
         <input type="text" id="inputFirstName" th:field="*{firstName}" class="form-control" placeholder="First Name"
                required>
         <label for="inputFirstName">First Name</label>
+        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error__message"></div>
     </div>
 
     <div class="form-label-group">
         <input type="text" id="inputLastName" th:field="*{lastName}" class="form-control" placeholder="Last Name"
                required>
         <label for="inputLastName">Last Name</label>
+        <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error__message"></div>
     </div>
 
     <div class="form-label-group">
         <input type="email" id="inputEmail" th:field="*{email}" class="form-control" placeholder="Email address"
                required autofocus>
         <label for="inputEmail">Email address</label>
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error__message"></div>
     </div>
 
     <div class="form-label-group">
         <input type="password" id="inputPassword" th:field="*{password}" class="form-control" placeholder="Password"
                required>
         <label for="inputPassword">Password</label>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error__message"></div>
     </div>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>

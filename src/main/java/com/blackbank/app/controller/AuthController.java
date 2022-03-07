@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 
 /**
  * Controller for the {@link User} authentication.
@@ -41,7 +43,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public String signUpProcess(@ModelAttribute("user") User user, BindingResult bindingResult) {
+    public String signUpProcess(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "registration";
