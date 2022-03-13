@@ -3,9 +3,14 @@ package com.blackbank.app.controller;
 import com.blackbank.app.models.User;
 import com.blackbank.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 /**
  * Controller that manages mappings related to performing operations with {@link User} entities.
@@ -45,4 +50,14 @@ public class UserOperationsController {
         return "redirect:/profile/user/" + user.getId();
     }
 
+    @GetMapping("/transferMoney")
+    public String getTransferMoneyPage(Model model) {
+        Object principalName = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User currentUser = userRepository.findByEmail(String.valueOf(principalName)).orElse(null);
+
+        model.addAttribute("userBalance", currentUser.getBalance());
+
+        return "operations/transferMoneyPage";
+    }
 }

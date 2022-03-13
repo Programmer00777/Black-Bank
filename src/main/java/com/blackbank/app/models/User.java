@@ -41,6 +41,9 @@ public class User {
     @Column(name = "role")
     private Role role = Role.USER;
 
+    @Column(name = "balance")
+    private Long balance;
+
     public String getFullName() {
         return firstName + " " + lastName;
     }
