@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title th:text="${username}">User Page</title>
+    <title>Search User</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -42,22 +42,19 @@
                 </button>
             </div>
         </div>
-    </header> <br>
+    </header>
 
-    <div class="profile_info">
-        <h3>Profile</h3>
+    <form th:method="post" class="inputForm">
+        <label for="email"> User's email </label> <br>
+        <input type="text" name="email" id="email"/> <br><br>
 
-        <img src="/images/other/user_profile_photo.png" alt="profile_photo"> <br><br>
-
-        <p th:text="${username}"></p>
-        Role: <i><p th:text="${userRole}"></p></i>
-        Status: <i><p th:text="${userStatus}"></p></i>
-    </div>
+        <input type="submit" value="Search"/>
+    </form>
 
     <br><br>
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">User page</a>
+            <a class="navbar-brand" href="#">Search for User</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

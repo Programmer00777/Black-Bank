@@ -46,12 +46,12 @@ public class AuthController {
     public String signUpProcess(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "registration";
+            return "redirect:/signup";
         }
 
         if (userRepository.findByEmail(user.getEmail()).orElse(null) != null) {
             System.out.println("Such user already exists");
-            return "redirect:/auth/signup";
+            return "redirect:/signup";
         }
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);

@@ -54,6 +54,8 @@ public class MainController {
 
         model.addAttribute("username", targetUser.getFullName());
         model.addAttribute("user", targetUser);
+        model.addAttribute("userRole", targetUser.getRole().name());
+        model.addAttribute("userStatus", targetUser.getStatus().name());
 
         return "userPage";
     }
