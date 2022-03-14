@@ -9,5 +9,15 @@
 <body>
     <p>Your balance is:</p>
     <div th:text="${userBalance}"></div>
+
+    <form th:method="post">
+        <label for="userEmail">Email of the user to transfer money</label>
+        <input type="text" id="userEmail" name="userEmail"/>
+
+        <label for="amount">Amount</label>
+        <input type="text" id="amount" name="amount"/>
+
+        <input type="submit" value="Transfer">
+    </form>
 </body>
 </html>
