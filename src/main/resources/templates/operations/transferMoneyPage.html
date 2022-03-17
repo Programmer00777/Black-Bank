@@ -5,19 +5,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Transfer money</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/styles/main.css" type="text/css">
 </head>
 <body>
-    <p>Your balance is:</p>
-    <div th:text="${userBalance}"></div>
+
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Contact</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                            <li><a href="#" class="text-white">Email me</a></li>
+                            <li><a href="/logout" class="text-white">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <p th:text="${username}"></p>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="balance">
+        <p>Your balance is:</p>
+        <i><div th:text="${userBalance}" id="balance__value"></div></i>
+    </div>
 
     <form th:method="post">
-        <label for="userEmail">Email of the user to transfer money</label>
+        <label for="userEmail">Email of the user to transfer money</label><br>
         <input type="text" id="userEmail" name="userEmail"/>
 
-        <label for="amount">Amount</label>
-        <input type="text" id="amount" name="amount"/>
+        <br><br>
 
-        <input type="submit" value="Transfer">
+        <label for="amount">Amount</label><br>
+        <input type="text" id="amount" name="amount" min="1" required="false"/>
+
+        <br><br>
+
+        <input type="submit" value="Transfer" class="button">
     </form>
+
+    <br><br>
+    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Money Transfer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/profile/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FAQ</a>
+                    </li>
+
+                    <li class="nav-item dropup">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">About</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                            <li><a class="dropdown-item" href="#">General info</a></li>
+                            <li><a class="dropdown-item" href="https://github.com/Programmer00777/Black-Bank">GitHub repo</a></li>
+                            <li><a class="dropdown-item" href="https://www.linkedin.com/in/sergey-chernikov-161242230/">Author's LinkedIn</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://getbootstrap.com/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -30,6 +30,7 @@ public class MainController {
     @GetMapping("/")
     public String index(Principal principal, Model model) {
         model.addAttribute("username", principal.getName());
+
         return "mainPage";
     }
 

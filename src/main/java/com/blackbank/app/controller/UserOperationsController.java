@@ -56,6 +56,7 @@ public class UserOperationsController {
         User currentUser = userRepository.findByEmail(String.valueOf(principalName)).orElse(null);
 
         model.addAttribute("userBalance", currentUser.getBalance());
+        model.addAttribute("username", currentUser.getFullName());
 
         return "operations/transferMoneyPage";
     }
@@ -63,6 +64,11 @@ public class UserOperationsController {
     @SuppressWarnings(value = "all")
     @PostMapping("/transferMoney")
     public String processTransferMoneyPage(@RequestParam("userEmail") String userEmail, @RequestParam("amount") Long amount) {
+
+        if (amount == 0 || amount < 0) {
+            System.out.println("Enter the correct amount of money to be transferred first.");
+            return "redirect:/operations/transferMoney";
+        }
 
         userServiceImplementation.transferMoneyTo(userEmail, amount);
 

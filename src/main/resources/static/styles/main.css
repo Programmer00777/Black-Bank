@@ -32,3 +32,31 @@ body {
 .profile_info h3 {
     color: white;
 }
+
+#balance {
+    padding-top: 5%;
+    color: white;
+    font-family: Monaco;
+}
+
+form label {
+    color: white;
+    font-family: Monaco;
+}
+
+#balance__value {
+    font-size: 20px;
+    padding-bottom: 5%;
+}
+
+form input.button {
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+form input.button:hover {
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #c1dab7;
+    transition: .3s;
+}
