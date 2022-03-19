@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Admin Page</title>
+    <title>Send email</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/styles/main.css" type="text/css">
 </head>
 <body>
-
     <header>
         <div class="collapse bg-dark" id="navbarHeader">
             <div class="container">
@@ -45,25 +44,27 @@
         </div>
     </header>
 
-    <div class="change_user_role_or_block">
+    <h1>Send an email</h1>
+
+    <div class="email_sending_form">
         <form th:method="post">
-            <label for="userEmail">User email</label><br>
-            <input type="text" id="userEmail" name="userEmail"><br><br>
+            <label for="to">To:</label>
+            <input type="text" id="to" name="to" required="true"><br><br>
 
-            <p>* Select an operation you want to perform with this user *</p>
-            <input type="radio" id="block" name="operation" value="block">
-            <label for="block">Block</label><br>
-            <input type="radio" id="set_admin_role" name="operation" value="change_role">
-            <label for="set_admin_role">Set ADMIN role</label><br><br>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required="true"><br><br>
 
-            <input type="submit" value="Continue" class="button">
+            <label for="text">Text:</label><br>
+            <textarea name="text" id="text" cols="30" rows="10"></textarea><br><br>
+
+            <input type="submit" value="Send" class="button">
         </form>
     </div>
 
     <br><br>
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Admin Page</a>
+            <a class="navbar-brand" href="#">Send email</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

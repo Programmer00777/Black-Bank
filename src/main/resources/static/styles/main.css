@@ -8,6 +8,11 @@ body {
     text-align: center;
 }
 
+h1 {
+    color: white;
+    padding-top: 2%;
+}
+
 .inputForm {
     padding-top: 5%;
 }
@@ -59,4 +64,29 @@ form input.button:hover {
     padding: 5px 10px;
     background-color: #c1dab7;
     transition: .3s;
+}
+
+.change_user_role_or_block {
+    padding-top: 10%;
+}
+
+.owner_operations_form {
+    padding-top: 10%;
+}
+
+.email_sending_form {
+    padding-top: 7%;
+    padding-bottom: 5%;
+}
+
+p {
+    color: white;
+}
+
+#text {
+    width: 30%;
+    height: 200px;
+    padding: 1% 1%;
+    font-size: 20px;
+    box-sizing: border-box;
 }
